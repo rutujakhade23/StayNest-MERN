@@ -8,9 +8,8 @@ const ListingSchema = new Schema({
     },
     description: String,
     image: {
-        type: String,
-        set: (v) => v ==="" ? "https://unsplash.com/photos/lush-green-island-with-rocky-cliffs-and-white-sand-beach-qzgmZKsyVsQ" 
-        : v,
+    type: mongoose.Schema.Types.Mixed,
+    default: "https://unsplash.com/photos/lush-green-island-with-rocky-cliffs-and-white-sand-beach-qzgmZKsyVsQ"
     },
     price: Number,
     location: String,
@@ -18,5 +17,5 @@ const ListingSchema = new Schema({
 });
 
 const Listing = mongoose.model("Listing", ListingSchema);
-module.export = Listing;
+module.exports = Listing;
 
