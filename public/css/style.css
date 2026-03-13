@@ -68,12 +68,22 @@ body{
     text-decoration: none;
 }
 /* effect*/
-.card-img-overlay{
+/* .card-img-overlay{
     opacity: 0;
 }
 .card-img-overlay:hover{
     opacity: 0.2;
-    background-color: white;
+    background-color: white  !important;
+} */
+.card-img-overlay {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-img-overlay.hovered, 
+.card-img-overlay.clicked {
+    opacity: 0.2;
+    background-color: white !important;
 }
 
 /* New page */
