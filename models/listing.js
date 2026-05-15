@@ -10,8 +10,8 @@ const ListingSchema = new Schema({
     },
     description: String,
     image: {
-    type: mongoose.Schema.Types.Mixed,
-    default: "https://unsplash.com/photos/lush-green-island-with-rocky-cliffs-and-white-sand-beach-qzgmZKsyVsQ"
+        url: String,
+        filename: String,
     },
     price: Number,
     location: String,
