@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "24.2.0"
+  },
   "name": "majorproject",
   "version": "1.0.0",
   "description": "",
@@ -13,6 +16,7 @@
   "dependencies": {
     "cloudinary": "^2.10.0",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
     "dotenv": "^17.4.2",
     "ejs": "^4.0.1",
     "ejs-mate": "^4.0.0",
@@ -25,6 +29,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^9.1.0"
+    "passport-local-mongoose": "^9.1.0",
+    "streamifier": "^0.1.1"
   }
 }

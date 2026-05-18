@@ -1,10 +1,10 @@
 const Listing = require("../models/listing");
 
 
-module.exports.index = async(req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
-};
+// module.exports.index = async(req, res) => {
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", {allListings});
+// };
 
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
@@ -39,19 +39,51 @@ module.exports.createListing = async (req, res, next) =>{
          res.redirect("/listings");
     };
 
-module.exports.renderEditForm = async (req, res) =>{
-     let { id } = req.params;
-     const listing = await Listing.findById(id);
-     if(!listing){
+// module.exports.renderEditForm = async (req, res) =>{
+//      let { id } = req.params;
+//      const listing = await Listing.findById(id);
+//      if(!listing){
+//         req.flash("error", "Listing you requested for does not exist!");
+//         res.redirect("/listings");
+//     }
+
+//     let originalImageUrl = listing.image.url;
+//     originalImageUrl = originalImageUrl.replace("/upload", "/upload/h_140, w_250");
+//      res.render("listings/edit.ejs", { listing, originalImageUrl });
+//  };
+
+module.exports.renderEditForm = async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+
+    if (!listing) {
         req.flash("error", "Listing you requested for does not exist!");
-        res.redirect("/listings");
+        return res.redirect("/listings");
     }
-     res.render("listings/edit.ejs", { listing });
- };
+
+    let originalImageUrl = "";
+
+    if (listing.image && listing.image.url) {
+        originalImageUrl = listing.image.url.replace(
+            "/upload",
+            "/upload/h_140,w_250"
+        );
+    }
+
+    res.render("listings/edit.ejs", { listing, originalImageUrl });
+};
 
  module.exports.updateListing = async (req, res)=>{
       let {id} = req.params;
-      await Listing.findByIdAndUpdate(id, {...req.body.listing});
+      let listing = await Listing.findByIdAndUpdate(id, {...req.body.listing});
+
+      if(typeof req.file !== "undefined"){
+      let url = req.file.path;
+      let filename = req.file.filename;
+      listing.image = {url, filename};
+      await listing.save();
+      }
+
       req.flash("success", "Listing Updated!");
       res.redirect(`/listings/${id}`);
   };
@@ -63,3 +95,45 @@ module.exports.renderEditForm = async (req, res) =>{
        req.flash("success", "Listing Deleted!");
        res.redirect("/listings");
    };
+
+// module.exports.index = async (req, res) => {   //for category 
+
+//     let { category } = req.query;
+
+//     let allListings;
+
+//     if(category){
+//         allListings = await Listing.find({ category });
+//     } else {
+//         allListings = await Listing.find({});
+//     }
+
+//     res.render("listings/index.ejs", { allListings });
+// };
+
+module.exports.index = async (req, res) => {
+
+    let { category, search } = req.query;
+
+    let allListings;
+
+    if(search){
+        allListings = await Listing.find({
+            $or: [
+                { location: { $regex: search, $options: "i" } },
+                { country: { $regex: search, $options: "i" } },
+                { title: { $regex: search, $options: "i" } },
+            ]
+        });
+    }
+
+    else if(category){
+        allListings = await Listing.find({ category });
+    }
+
+    else{
+        allListings = await Listing.find({});
+    }
+
+    res.render("listings/index.ejs", { allListings });
+};
