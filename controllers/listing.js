@@ -7,7 +7,7 @@ const Listing = require("../models/listing");
 // };
 
 module.exports.renderNewForm = (req, res) => {
-    res.render("listings/new.ejs");
+    res.render("listings/new");
  };
 
  module.exports.showListing = (async (req, res) =>{
@@ -25,7 +25,7 @@ module.exports.renderNewForm = (req, res) => {
          res.redirect("/listings");
      }
     console.log(listing);
-     res.render("listings/show.ejs", { listing });
+     res.render("listings/show", { listing });
   });
 
 module.exports.createListing = async (req, res, next) =>{
@@ -135,5 +135,5 @@ module.exports.index = async (req, res) => {
         allListings = await Listing.find({});
     }
 
-    res.render("listings/index.ejs", { allListings });
+    res.render("listings/index", { allListings });
 };
