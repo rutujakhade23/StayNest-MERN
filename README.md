@@ -1,39 +1,176 @@
-🚀 StayNest – Property Booking Platform (In Progress)
+# StayNest - Full Stack Vacation Rental Platform
 
-StayNest is a full-stack MERN application inspired by Airbnb, focused on building a scalable property listing and booking backend system.
+A full-stack vacation rental web application inspired by Airbnb, built using the MERN stack. Users can browse property listings, create accounts, add reviews, and manage listings with secure authentication and authorization.
 
-🛠 Tech Stack
+---
 
-Node.js
+## 🚀 Live Demo
 
-Express.js
+🌐 Live Website:  
+https://staynest-mern.onrender.com/listings
 
-MongoDB
+💻 GitHub Repository:  
+https://github.com/rutujakhade23/StayNest-MERN
 
-Mongoose
+---
 
-REST APIs
+## ✨ Features
 
-📌 Current Features
+- 🔐 User Authentication & Authorization
+- 🏠 Create, Edit & Delete Listings
+- 📸 Upload Property Images
+- ⭐ Add Reviews & Ratings
+- 📍 Interactive Map Integration
+- 🔎 Search & Browse Listings
+- 📱 Responsive UI Design
+- 🛡️ Secure Session Handling
+- ⚡ Flash Messages & Form Validation
 
-Backend project structure setup
+---
 
-MongoDB database integration
+## 🛠️ Tech Stack
 
-Modular folder architecture
+### Frontend
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- EJS
 
-Initial models configuration
+### Backend
+- Node.js
+- Express.js
 
-🔄 Features In Progress
+### Database
+- MongoDB
+- Mongoose
 
-Property listing CRUD APIs
+### Authentication
+- Passport.js
 
-User authentication (JWT-based)
+### Cloud & Deployment
+- Cloudinary
+- Render
 
-Booking system implementation
+### Other Tools
+- Mapbox API
+- Multer
+- Joi
+- Express Session
+- Connect Flash
 
-Deployment and frontend integration
+---
 
-🎯 Project Goal
+## 📂 Project Structure
 
-To design and implement a scalable backend architecture for a property rental platform, focusing on RESTful API design, database modeling, and secure authentication.
+```bash
+StayNest-MERN/
+│
+├── models/
+├── routes/
+├── controllers/
+├── views/
+├── public/
+├── utils/
+├── middleware.js
+├── app.js
+├── cloudConfig.js
+├── schema.js
+└── package.json
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/rutujakhade23/StayNest-MERN.git
+```
+
+### 2️⃣ Go to Project Folder
+
+```bash
+cd StayNest-MERN
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+### 4️⃣ Create .env File
+
+```env
+ATLASDB_URL=your_mongodb_url
+SECRET=your_secret_key
+
+CLOUD_NAME=your_cloudinary_name
+CLOUD_API_KEY=your_cloudinary_api_key
+CLOUD_API_SECRET=your_cloudinary_secret
+
+MAP_TOKEN=your_mapbox_token
+```
+
+---
+
+## ▶️ Run Project
+
+```bash
+nodemon app.js
+```
+
+or
+
+```bash
+node app.js
+```
+
+---
+
+## 🔒 Authentication & Authorization
+
+- Only logged-in users can create listings
+- Only owners can edit/delete listings
+- Only logged-in users can add reviews
+- Review authors can delete their reviews
+
+---
+
+## 📚 Learning Outcomes
+
+- REST APIs
+- MVC Architecture
+- Authentication & Authorization
+- CRUD Operations
+- MongoDB Relationships
+- Cloudinary Image Upload
+- Backend Validation
+- Deployment
+
+---
+
+## 🌟 Future Improvements
+
+- Booking System
+- Wishlist Feature
+- Payment Integration
+- Admin Dashboard
+- Advanced Filters
+
+---
+
+## 👩‍💻 Author
+
+Rutuja Khade
+
+GitHub:
+https://github.com/rutujakhade23
+
+---
+
+## 📄 License
+
+This project is for educational and portfolio purposes.
